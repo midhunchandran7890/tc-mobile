@@ -1,15 +1,16 @@
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Image } from "expo-image";
 import { styles } from "../../styles/login";
 
 const Login = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
         <Image
           source={require("../../assets/images/app-logo.png")}
-          style={{ width: 100, height: 100, alignSelf: "center" }}
+          style={styles.appLogo}
         />
       </View>
       <View style={styles.loginContainer}>
@@ -34,7 +35,7 @@ const Login = () => {
           <Text>Create Account</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
