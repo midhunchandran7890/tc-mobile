@@ -14,11 +14,46 @@ const Login = () => {
         />
       </View>
       <View style={styles.loginContainer}>
-        <TextInput placeholder="Email" />
-        <TextInput placeholder="Password" />
-        <TouchableOpacity>
-          <Text>Login</Text>
-        </TouchableOpacity>
+        <View style={styles.emailInputContainer}>
+          <TextInput
+            placeholder="Email"
+            style={{
+              // backgroundColor: "blue",
+              borderColor: "#DCE5E2",
+              borderWidth: 1,
+              borderRadius: 10,
+              height: 50,
+            }}
+          />
+        </View>
+        <View style={styles.passwordInputContainer}>
+          <TextInput
+            placeholder="Password"
+            style={{
+              // backgroundColor: "red",
+              borderColor: "#DCE5E2",
+              borderWidth: 1,
+              borderRadius: 10,
+              height: 50,
+            }}
+          />
+        </View>
+        <View style={styles.loginButtonContainer}>
+          <TouchableOpacity
+            style={{
+              backgroundColor: "#3B7D6E",
+              alignItems: "center",
+              paddingVertical: 15,
+              borderRadius: 10,
+            }}
+          >
+            <Text
+              style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "bold" }}
+            >
+              Login
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.socialLoginContainer}>
         <Image

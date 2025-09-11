@@ -15,11 +15,21 @@ export const styles = StyleSheet.create({
     width: width * 0.3,
     height: width * 0.3,
   },
-  loginContainer: { backgroundColor: "blue" },
+  loginContainer: {},
+  emailInputContainer: {
+    // backgroundColor: "blue",
+    marginHorizontal: 20,
+  },
+  passwordInputContainer: { marginHorizontal: 20, marginTop: 20 },
+  loginButtonContainer: {
+    marginHorizontal: 20,
+    marginTop: 20,
+  },
   socialLoginContainer: {
     backgroundColor: "green",
     flexDirection: "row",
     justifyContent: "center",
+    marginTop: 30,
   },
   accountCreationContainer: { backgroundColor: "yellow" },
 });
