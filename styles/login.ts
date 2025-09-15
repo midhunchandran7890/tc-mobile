@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   logoContainer: {
-    paddingVertical: 50,
+    paddingVertical: 80,
     alignItems: "center",
   },
   appLogo: {
@@ -17,19 +17,22 @@ export const styles = StyleSheet.create({
   },
   loginContainer: {},
   emailInputContainer: {
-    // backgroundColor: "blue",
     marginHorizontal: 20,
   },
   passwordInputContainer: { marginHorizontal: 20, marginTop: 20 },
   loginButtonContainer: {
     marginHorizontal: 20,
-    marginTop: 20,
-  },
-  socialLoginContainer: {
-    backgroundColor: "green",
-    flexDirection: "row",
-    justifyContent: "center",
     marginTop: 30,
   },
-  accountCreationContainer: { backgroundColor: "yellow" },
+  socialLoginContainer: {
+    alignItems: "center",
+    marginTop: 30,
+  },
+  accountCreationContainer: {
+    flexDirection: "row",
+    marginTop: 20,
+    position: "absolute",
+    bottom: 30,
+    alignSelf: "center",
+  },
 });

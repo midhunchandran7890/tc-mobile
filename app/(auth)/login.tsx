@@ -18,7 +18,6 @@ const Login = () => {
           <TextInput
             placeholder="Email"
             style={{
-              // backgroundColor: "blue",
               borderColor: "#DCE5E2",
               borderWidth: 1,
               borderRadius: 10,
@@ -30,7 +29,6 @@ const Login = () => {
           <TextInput
             placeholder="Password"
             style={{
-              // backgroundColor: "red",
               borderColor: "#DCE5E2",
               borderWidth: 1,
               borderRadius: 10,
@@ -56,18 +54,24 @@ const Login = () => {
         </View>
       </View>
       <View style={styles.socialLoginContainer}>
-        <Image
-          source={require("../../assets/images/app-logo.png")}
-          style={{ width: 35, height: 35, alignSelf: "center" }}
-        />
-        <Image
-          source={require("../../assets/images/app-logo.png")}
-          style={{ width: 35, height: 35, alignSelf: "center" }}
-        />
+        <Text style={{ fontWeight: "bold" }}>Or Sign in with</Text>
+        <View style={{ flexDirection: "row", gap: 20, marginTop: 10 }}>
+          <Image
+            source={require("../../assets/images/app-logo.png")}
+            style={{ width: 35, height: 35, alignSelf: "center" }}
+          />
+          <Image
+            source={require("../../assets/images/app-logo.png")}
+            style={{ width: 35, height: 35, alignSelf: "center" }}
+          />
+        </View>
       </View>
       <View style={styles.accountCreationContainer}>
+        <Text>Haven't any account? </Text>
         <TouchableOpacity>
-          <Text>Create Account</Text>
+          <Text style={{ fontWeight: "bold", color: "#3B7D6E" }}>
+            Create account
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
