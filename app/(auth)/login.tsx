@@ -38,7 +38,7 @@ const Login = () => {
           />
         </View>
         <View style={styles.loginButtonContainer}>
-          <AppButton label="Login" />
+          <AppButton label="Login" onPress={() => alert("Login")} />
         </View>
       </View>
       <View style={styles.socialLoginContainer}>
