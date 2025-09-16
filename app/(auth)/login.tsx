@@ -1,7 +1,8 @@
+import { Image } from "expo-image";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { Image } from "expo-image";
+import { AppButton } from "@/components/AppButton/AppButton";
 import { styles } from "../../styles/login";
 
 const Login = () => {
@@ -37,20 +38,7 @@ const Login = () => {
           />
         </View>
         <View style={styles.loginButtonContainer}>
-          <TouchableOpacity
-            style={{
-              backgroundColor: "#3B7D6E",
-              alignItems: "center",
-              paddingVertical: 15,
-              borderRadius: 10,
-            }}
-          >
-            <Text
-              style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "bold" }}
-            >
-              Login
-            </Text>
-          </TouchableOpacity>
+          <AppButton label="Login" />
         </View>
       </View>
       <View style={styles.socialLoginContainer}>
