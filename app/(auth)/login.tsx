@@ -1,8 +1,9 @@
 import { Image } from "expo-image";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { AppButton } from "@/components/AppButton/AppButton";
+import { AppButton } from "../../components/AppButton/AppButton";
+import { AppTextInput } from "../../components/AppTextInput/AppTextInput";
 import { styles } from "../../styles/login";
 
 const Login = () => {
@@ -16,26 +17,10 @@ const Login = () => {
       </View>
       <View style={styles.loginContainer}>
         <View style={styles.emailInputContainer}>
-          <TextInput
-            placeholder="Email"
-            style={{
-              borderColor: "#DCE5E2",
-              borderWidth: 1,
-              borderRadius: 10,
-              height: 50,
-            }}
-          />
+          <AppTextInput placeholder="Email" />
         </View>
         <View style={styles.passwordInputContainer}>
-          <TextInput
-            placeholder="Password"
-            style={{
-              borderColor: "#DCE5E2",
-              borderWidth: 1,
-              borderRadius: 10,
-              height: 50,
-            }}
-          />
+          <AppTextInput placeholder="Password" />
         </View>
         <View style={styles.loginButtonContainer}>
           <AppButton label="Login" onPress={() => alert("Login")} />
