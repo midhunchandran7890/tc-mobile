@@ -1,8 +1,9 @@
 import { Image } from "expo-image";
-import { Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { AppButton } from "../../components/AppButton/AppButton";
+import { AppText } from "../../components/AppText/AppText";
 import { AppTextInput } from "../../components/AppTextInput/AppTextInput";
 import { styles } from "../../styles/login";
 
@@ -27,7 +28,7 @@ const Login = () => {
         </View>
       </View>
       <View style={styles.socialLoginContainer}>
-        <Text style={{ fontWeight: "bold" }}>Or Sign in with</Text>
+        <AppText text={"Or Sign in with"} style={{ fontWeight: "bold" }} />
         <View style={{ flexDirection: "row", gap: 20, marginTop: 10 }}>
           <Image
             source={require("../../assets/images/app-logo.png")}
@@ -40,11 +41,12 @@ const Login = () => {
         </View>
       </View>
       <View style={styles.accountCreationContainer}>
-        <Text>Haven't any account? </Text>
+        <AppText text={"Haven't any account? "} />
         <TouchableOpacity>
-          <Text style={{ fontWeight: "bold", color: "#3B7D6E" }}>
-            Create account
-          </Text>
+          <AppText
+            text={"Create account"}
+            style={{ fontWeight: "bold", color: "#3B7D6E" }}
+          />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
