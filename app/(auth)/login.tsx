@@ -1,4 +1,5 @@
 import { Image } from "expo-image";
+import { Controller, useForm } from "react-hook-form";
 import { TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -8,6 +9,23 @@ import { AppTextInput } from "../../components/AppTextInput/AppTextInput";
 import { styles } from "../../styles/login";
 
 const Login = () => {
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = (data) => {
+    alert(`Email:${data.email} Password:${data.password}`);
+    reset();
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
@@ -17,14 +35,52 @@ const Login = () => {
         />
       </View>
       <View style={styles.loginContainer}>
-        <View style={styles.emailInputContainer}>
-          <AppTextInput placeholder="Email" />
-        </View>
-        <View style={styles.passwordInputContainer}>
-          <AppTextInput placeholder="Password" />
-        </View>
+        <Controller
+          name="email"
+          control={control}
+          rules={{ required: "Email is required" }}
+          render={({ field: { onChange, value } }) => (
+            <View style={styles.emailInputContainer}>
+              <AppTextInput
+                placeholder="Email"
+                onChangeText={onChange}
+                value={value}
+              />
+            </View>
+          )}
+        />
+        {errors?.email?.message ? (
+          <View style={styles.emailInputContainer}>
+            <AppText text={errors.email.message} style={{ color: "red" }} />
+          </View>
+        ) : null}
+        <Controller
+          name="password"
+          control={control}
+          rules={{
+            required: "Email is required",
+            minLength: {
+              value: 5,
+              message: "Password must be at least 5 characters",
+            },
+          }}
+          render={({ field: { onChange, value } }) => (
+            <View style={styles.passwordInputContainer}>
+              <AppTextInput
+                placeholder="Password"
+                onChangeText={onChange}
+                value={value}
+              />
+            </View>
+          )}
+        />
+        {errors?.password?.message ? (
+          <View style={styles.emailInputContainer}>
+            <AppText text={errors.password.message} style={{ color: "red" }} />
+          </View>
+        ) : null}
         <View style={styles.loginButtonContainer}>
-          <AppButton label="Login" onPress={() => alert("Login")} />
+          <AppButton label="Login" onPress={handleSubmit(onSubmit)} />
         </View>
       </View>
       <View style={styles.socialLoginContainer}>
