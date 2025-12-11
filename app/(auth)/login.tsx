@@ -1,7 +1,9 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Image } from "expo-image";
 import { Controller, useForm } from "react-hook-form";
 import { TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import * as yup from "yup";
 
 import { AppButton } from "../../components/AppButton/AppButton";
 import { AppText } from "../../components/AppText/AppText";
@@ -9,6 +11,11 @@ import { AppTextInput } from "../../components/AppTextInput/AppTextInput";
 import { styles } from "../../styles/login";
 
 const Login = () => {
+  const schema = yup.object({
+    email: yup.string().required().email(),
+    password: yup.string().required(),
+  });
+
   const {
     control,
     handleSubmit,
@@ -19,6 +26,7 @@ const Login = () => {
       email: "",
       password: "",
     },
+    resolver: yupResolver(schema),
   });
 
   const onSubmit = (data) => {
