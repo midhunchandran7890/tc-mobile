@@ -7,8 +7,11 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
+import { Provider } from "react-redux";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
+
+import { store } from "../store";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -23,17 +26,19 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen
-          name="(auth)/login"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
+      <Provider store={store}>
+        <Stack>
+          <Stack.Screen
+            name="(auth)/login"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+        <StatusBar style="auto" />
+      </Provider>
     </ThemeProvider>
   );
 }

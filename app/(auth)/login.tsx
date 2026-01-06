@@ -3,12 +3,15 @@ import { Image } from "expo-image";
 import { Controller, useForm } from "react-hook-form";
 import { TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 
 import { AppButton } from "../../components/AppButton/AppButton";
 import { AppText } from "../../components/AppText/AppText";
 import { AppTextInput } from "../../components/AppTextInput/AppTextInput";
 import { styles } from "../../styles/login";
+
+import { decrement, increment } from "../../store/counterSlice";
 
 const Login = () => {
   const schema = yup.object({
@@ -28,6 +31,10 @@ const Login = () => {
     },
     resolver: yupResolver(schema),
   });
+
+  const dispatch = useDispatch();
+
+  const { value } = useSelector((state) => state.counter);
 
   const onSubmit = (data) => {
     alert(`Email:${data.email} Password:${data.password}`);
@@ -89,6 +96,15 @@ const Login = () => {
         ) : null}
         <View style={styles.loginButtonContainer}>
           <AppButton label="Login" onPress={handleSubmit(onSubmit)} />
+        </View>{" "}
+        <View style={styles.loginButtonContainer}>
+          <AppButton label="+" onPress={() => dispatch(increment())} />
+        </View>{" "}
+        <View style={styles.emailInputContainer}>
+          <AppText text={value} style={{ color: "red" }} />
+        </View>
+        <View style={styles.loginButtonContainer}>
+          <AppButton label="-" onPress={() => dispatch(decrement())} />
         </View>
       </View>
       <View style={styles.socialLoginContainer}>
