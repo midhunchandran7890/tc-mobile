@@ -11,6 +11,7 @@ import { AppText } from "../../components/AppText/AppText";
 import { AppTextInput } from "../../components/AppTextInput/AppTextInput";
 import { styles } from "../../styles/login";
 
+import { popFromArray, pushToArray } from "../../store/arraySlice";
 import { decrement, increment } from "../../store/counterSlice";
 
 const Login = () => {
@@ -35,6 +36,7 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const { value } = useSelector((state) => state.counter);
+  const { array } = useSelector((state) => state.array);
 
   const onSubmit = (data) => {
     alert(`Email:${data.email} Password:${data.password}`);
@@ -99,12 +101,15 @@ const Login = () => {
         </View>{" "}
         <View style={styles.loginButtonContainer}>
           <AppButton label="+" onPress={() => dispatch(increment())} />
+          <AppButton label="Push" onPress={() => dispatch(pushToArray())} />
         </View>{" "}
         <View style={styles.emailInputContainer}>
           <AppText text={value} style={{ color: "red" }} />
+          <AppText text={JSON.stringify(array)} style={{ color: "red" }} />
         </View>
         <View style={styles.loginButtonContainer}>
           <AppButton label="-" onPress={() => dispatch(decrement())} />
+          <AppButton label="Pop" onPress={() => dispatch(popFromArray())} />
         </View>
       </View>
       <View style={styles.socialLoginContainer}>
