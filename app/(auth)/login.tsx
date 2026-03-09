@@ -13,6 +13,8 @@ import { styles } from "../../styles/login";
 
 import { popFromArray, pushToArray } from "../../store/arraySlice";
 import { decrement, increment } from "../../store/counterSlice";
+import { fetchUsers } from "../../store/userSlice";
+import { AppDispatch, RootState } from "@/store";
 
 const Login = () => {
   const schema = yup.object({
@@ -33,10 +35,13 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const { value } = useSelector((state) => state.counter);
-  const { array } = useSelector((state) => state.array);
+  const { value } = useSelector((state: RootState) => state.counter);
+  const { array } = useSelector((state: RootState) => state.array);
+  const { users, loading, error } = useSelector(
+    (state: RootState) => state.user
+  );
 
   const onSubmit = (data) => {
     alert(`Email:${data.email} Password:${data.password}`);
@@ -102,10 +107,17 @@ const Login = () => {
         <View style={styles.loginButtonContainer}>
           <AppButton label="+" onPress={() => dispatch(increment())} />
           <AppButton label="Push" onPress={() => dispatch(pushToArray())} />
+          <AppButton
+            label="Fetch Users"
+            onPress={() => dispatch(fetchUsers())}
+          />
         </View>{" "}
         <View style={styles.emailInputContainer}>
           <AppText text={value} style={{ color: "red" }} />
           <AppText text={JSON.stringify(array)} style={{ color: "red" }} />
+          {loading ? <AppText text={"Loading..."} style={{ color: "red" }} /> : null}
+          {error ? <AppText text={error} style={{ color: "red" }} /> : null}
+          {users && users.length ? <AppText text={users.length.toString()} style={{ color: "red" }} /> : null}
         </View>
         <View style={styles.loginButtonContainer}>
           <AppButton label="-" onPress={() => dispatch(decrement())} />
